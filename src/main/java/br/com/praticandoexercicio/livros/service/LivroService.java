@@ -21,19 +21,9 @@ public class LivroService {
 
     }
 
-    public Livro findById(long id){ //Recebo um id inteiro mais retorno um livro
-       if (id == 1){
-           Livro livro = new Livro();
-           livro.setId(1);
-           livro.setTitulo("Livro 1");
-           livro.setAno(1950);
-           livro.setAutor("Maria Silva");
-           livro.setEditora("Abril");
-
-           return livro;
-       }else{
-           return null;
-       }
+    public Livro findById(Long id){ //Recebo um id inteiro mais retorno um livro
+      Livro livro = this.livroRepository.findById(id).get();
+      return livro;
     }
 
     public List<Livro> findAll(){
@@ -58,7 +48,7 @@ public class LivroService {
         return livro;
     }
 
-    public Livro update(Livro livro,int id){
+    public Livro update(Livro livro,Long id){
 
         Livro updateLivro = findById(id);
         livro.setId(livro.getId());

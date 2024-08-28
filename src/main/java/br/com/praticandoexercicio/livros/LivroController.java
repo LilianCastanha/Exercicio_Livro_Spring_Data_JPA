@@ -32,11 +32,10 @@ public class LivroController {
 
     }
 @GetMapping("/findById/{id}")
-    public ResponseEntity<Livro> findById(@PathVariable int id){
+    public ResponseEntity<Livro> findById(@PathVariable Long id){
        try {
          Livro livro = this.livroService.findById(id); // Retornar o livro
            return new ResponseEntity<>(livro,HttpStatus.OK);
-
 
        }catch(Exception e ){
            return new ResponseEntity<>(null,HttpStatus.BAD_REQUEST);
@@ -56,7 +55,7 @@ public class LivroController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Livro> update(@RequestBody Livro livro, @PathVariable int id){
+    public ResponseEntity<Livro> update(@RequestBody Livro livro, @PathVariable Long id){
         try {
             Livro updateLivro = this.livroService.update(livro,id);
             return new ResponseEntity<>(updateLivro,HttpStatus.OK);
